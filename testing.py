@@ -7,6 +7,8 @@ import spacy
 import os
 import webbrowser
 import pyautogui
+import subprocess
+import json
 import time
 pc_keywords = ["install", "update", "run", "open", "close", "search", "download", "volume", "brightness", "settings", "configure"]
 arduino_keywords = ["light", "fan", "sensor", "motor", "control"]
@@ -68,13 +70,13 @@ while True:
             print("Listening...")
             audio2 = r.listen(source2 ,timeout=15, phrase_time_limit=10)
             MyText = r.recognize_google(audio2).strip()  
-            if not MyText.lower().startswith("era"):
-                print("Command not recognized. Please start with 'era'.")
+            if not MyText.lower().startswith("gauri"):
+                print("Command not recognized. Please start with 'gauri'.")
                 continue
             MyText = MyText.lower()  
             print("Recognized speech:", MyText) 
             doc = nlp(MyText)  
-            tokens = [token.text for token in doc if not token.is_stop and token.text != "era"]
+            tokens = [token.text for token in doc if not token.is_stop and token.text != "gauri"]
             print("Tokens:", tokens)
             entities = [(ent.text, ent.label_) for ent in doc.ents]  
             print("Entities:", entities)

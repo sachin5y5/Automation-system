@@ -51,7 +51,7 @@ def execute_command(action):
 
 # Default task actions (expandable)
 DEFAULT_TASKS = {
-    "open browser": "open https://www.google.com",
+    "open browser": "www.google.com",
     "close browser": "pkill -f firefox",
     "search": "open https://www.google.com/search?q=",
     "play music": "open /path/to/music.mp3",
@@ -64,7 +64,10 @@ DEFAULT_TASKS = {
 
 def perform_task(command):
     """Dynamically execute a command based on user input."""
+    command = " ".join(command)
+    print(command)
     commands = load_commands()
+
     
     # Check if command is predefined
     if command in DEFAULT_TASKS:
