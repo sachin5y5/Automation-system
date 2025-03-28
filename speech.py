@@ -26,11 +26,11 @@ def perform_task(tokens):
             case "open":
                 tokens.remove("open")
                 tokens=" ".join(tokens)
-                pyautogui.press("win")  # Open Start Menu
-                time.sleep(1)  # Wait for the menu to open
-                pyautogui.write(tokens)  # Type the app name
-                time.sleep(1)  # Wait for the app to appear
-                pyautogui.press("enter")  # Press Enter to open the app
+                pyautogui.press("win")  
+                time.sleep(1)  
+                pyautogui.write(tokens)  
+                time.sleep(1)  
+                pyautogui.press("enter")  
             case "close":
                 tokens.remove("close")
                 tokens=" ".join(tokens)
@@ -42,7 +42,7 @@ def perform_task(tokens):
             case "search":
                 tokens.remove("search")
                 tokens=" ".join(tokens)
-                webbrowser.open(f"https://www.google.com/search?q={tokens}")  # Open Google search
+                webbrowser.open(f"https://www.google.com/search?q={tokens}")  
             case "volume":
                 tokens.remove("volume")
                 tokens=" ".join(tokens)
@@ -98,9 +98,9 @@ while True:
                     break
             print("Task Type:", task_type) 
             if task_type == "PC Task" or task_type == "Arduino Task":
-                print("Waiting for the next command...")  # Indicate readiness to listen
+                print("Waiting for the next command...")  
             else:
-                print("Waiting for the next command...")  # Indicate readiness to listen
+                print("Waiting for the next command...") 
             if "stop" in MyText:
                 print("Exiting...")
                 break
