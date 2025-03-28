@@ -1,12 +1,12 @@
 import screen_brightness_control as sbc
-import re
-import pygetwindow as gw
-import speech_recognition as sr
-import pyttsx3
-import spacy
+import re # impored for manipulation of string
+import pygetwindow as gw # imported for controling window applications 
+import speech_recognition as sr # imported for converting speech to text
+import pyttsx3 #imported for text to speech
+import spacy #impoerted for performing nlp fast
 import os
 import webbrowser
-import pyautogui
+import pyautogui # imported for automate the pressing keywords
 import time
 pc_keywords = ["install", "update", "run", "open", "close", "search", "download", "volume", "brightness", "settings", "configure"]
 arduino_keywords = ["light", "fan", "sensor", "motor", "control"]
@@ -68,9 +68,9 @@ while True:
             print("Listening...")
             audio2 = r.listen(source2 ,timeout=15, phrase_time_limit=10)
             MyText = r.recognize_google(audio2).strip()  
-            if not MyText.lower().startswith("era"):
-                print("Command not recognized. Please start with 'era'.")
-                continue
+            # if not MyText.lower().startswith("era"):
+            #     print("Command not recognized. Please start with 'era'.")
+            #     continue
             MyText = MyText.lower()  
             print("Recognized speech:", MyText) 
             doc = nlp(MyText)  
