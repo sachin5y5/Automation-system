@@ -14,7 +14,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from ui_page import run_ui
 
-pc_keywords = ["install", "update", "run", "open", "close", "search", "download", "volume", "brightness", "settings", "configure"]
+pc_keywords = ["install", "update", "open", "close", "search", "download", "volume", "brightness"]
 arduino_keywords = ["light", "fan"]
 entities = []  
 engine = pyttsx3.init()
@@ -33,6 +33,12 @@ def backend_logic():
                 MyText = r.recognize_google(audio2).strip()
                 MyText = MyText.lower()
                 print("Recognized speech:", MyText)
+                
+                # Process only if speech starts with "era"
+                if not MyText.startswith("era"):
+                    print("Speech does not start with 'era'. Ignoring...")
+                    continue
+                
                 doc = nlp(MyText)
                 tokens = list(dict.fromkeys([token.text for token in doc if not token.is_stop and token.text != "era"]))
                 print("Tokens:", tokens)
